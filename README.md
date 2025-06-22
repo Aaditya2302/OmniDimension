@@ -25,7 +25,7 @@ A user-friendly, AI-powered assistant that automates everyday tasks through natu
 
 ```bash
 
-multi-agent-task-app/
+OmniDimension/
 ├── client/          
 ├── server/          
 ├── README.md
