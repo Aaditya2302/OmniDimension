@@ -1,12 +1,34 @@
-import { useNavigate } from "react-router-dom"
+"use client"
+
+import { Link, useNavigate } from "react-router-dom"
 import { Stethoscope, Heart, Calendar, Shield, Users, Award, ArrowRight } from "lucide-react"
+// import { useAuth } from "../context/AuthContext"
+import axios from "axios"
+import { useContext } from "react"
+import { UserDataContext } from "../context/UserContext"
 
 const HomePage = () => {
   const navigate = useNavigate()
+  const { user } = useContext(UserDataContext) // ✅ use UserContext for display
+  const handleLogout = async () => {
+  try {
+    await axios.get(`${import.meta.env.VITE_BASE_URL}/users/logout`, {
+      withCredentials: true, // this is CRUCIAL to send cookies
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    });
+
+    localStorage.removeItem("token"); // cleanup
+    navigate("/login"); // redirect
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 relative overflow-hidden">
-      {/* Medical Background Pattern */}
+      {/* Background Icons */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10">
           <Stethoscope className="w-32 h-32 text-blue-600" />
@@ -33,17 +55,38 @@ const HomePage = () => {
               MedicalAI
             </span>
           </div>
+
           <div className="space-x-4">
-            <button className="px-6 py-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors">
-              Login
-            </button>
-            <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-xl hover:from-blue-700 hover:to-emerald-700 transition-all font-semibold">
-              Sign Up
-            </button>
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-gray-700">Welcome, {user.name || user.fullName}!</span>
+                <button
+                  onClick={handleLogout}
+                  className="px-6 py-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="px-6 py-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-xl hover:from-blue-700 hover:to-emerald-700 transition-all font-semibold"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
         </header>
 
-        {/* Hero Section */}
+        {/* Hero */}
         <div className="max-w-6xl mx-auto px-6 py-20">
           <div className="text-center mb-16">
             <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent mb-6">
@@ -66,40 +109,31 @@ const HomePage = () => {
 
           {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-8 mb-20">
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
-                <Stethoscope className="w-8 h-8 text-white" />
+            {/* Feature Cards */}
+            {[{
+              icon: <Stethoscope className="w-8 h-8 text-white" />,
+              title: "Smart Booking",
+              text: "Our AI understands your needs and finds the perfect healthcare provider in your area, checking availability in real-time."
+            }, {
+              icon: <Calendar className="w-8 h-8 text-white" />,
+              title: "Seamless Integration",
+              text: "Appointments are automatically added to your calendar with reminders, and confirmation emails are sent instantly."
+            }, {
+              icon: <Shield className="w-8 h-8 text-white" />,
+              title: "Secure & Private",
+              text: "Your health information is protected with enterprise-grade security and HIPAA-compliant data handling."
+            }].map((item, idx) => (
+              <div key={idx} className="bg-white rounded-3xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
+                <p className="text-gray-600">{item.text}</p>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Smart Booking</h3>
-              <p className="text-gray-600">
-                Our AI understands your needs and finds the perfect healthcare provider in your area, checking
-                availability in real-time.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
-                <Calendar className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Seamless Integration</h3>
-              <p className="text-gray-600">
-                Appointments are automatically added to your calendar with reminders, and confirmation emails are sent
-                instantly.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
-                <Shield className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Secure & Private</h3>
-              <p className="text-gray-600">
-                Your health information is protected with enterprise-grade security and HIPAA-compliant data handling.
-              </p>
-            </div>
+            ))}
           </div>
 
-          {/* About Us Section */}
+          {/* About Section */}
           <div className="bg-white rounded-3xl p-12 shadow-2xl border border-blue-100">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-800 mb-6">About MedicalAI</h2>
