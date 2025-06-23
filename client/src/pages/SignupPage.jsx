@@ -12,6 +12,7 @@ import {
   Calendar,
   ArrowLeft,
   Loader2,
+  Pill,
 } from "lucide-react";
 import axios from "axios";
 
@@ -126,7 +127,7 @@ const SignupPage = () => {
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-blue-100">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl mb-4">
-                <Stethoscope className="w-8 h-8 text-white" />
+                <Pill className="w-8 h-8 text-white" />
               </div>
               <h1 className="text-3xl font-bold bg-gradient-to-r from-[#162942] to-[#428ce2] bg-clip-text text-transparent mb-2">
                 Join Botoupsy
