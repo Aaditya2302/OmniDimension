@@ -8,6 +8,8 @@ import MedicalServicePage from "./pages/MedicalServicePage"
 import AddressDetailPage from "./pages/AddressDetailPage"
 import TaskExecutionPage from "./pages/TaskExecutionPage"
 import UserProtectedWrapper from "./pages/UserProtectedWrapper"
+import TermsPage from "./pages/TermsPage"
+import PrivacyPage from "./pages/PrivacyPage"
 import "./App.css"
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
                   <TaskExecutionPage />
                 </UserProtectedWrapper>
               } />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
             </Routes>
           </div>
         </Router>
