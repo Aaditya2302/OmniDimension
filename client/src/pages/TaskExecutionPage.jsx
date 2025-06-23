@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { CheckCircle, Clock, AlertCircle, ArrowLeft, Stethoscope, Heart, Calendar } from "lucide-react"
+import { CheckCircle, Clock, AlertCircle, ArrowLeft, Stethoscope, Heart, Calendar, Search, Hospital, Users, Mail, Phone, CalendarCheck } from "lucide-react"
 
 const TaskExecutionPage = () => {
   const navigate = useNavigate()
@@ -8,46 +8,91 @@ const TaskExecutionPage = () => {
   const [statusUpdates, setStatusUpdates] = useState([])
 
   const mockStatusUpdates = [
-    { id: 1, message: "🔍 Analyzing your medical request...", status: "processing", timestamp: new Date() },
+    {
+      id: 1,
+      message: (
+        <span className="flex items-center gap-2">
+          <Search className="inline w-5 h-5 text-blue-500" />
+          Analyzing your medical request...
+        </span>
+      ),
+      status: "processing",
+      timestamp: new Date(),
+    },
     {
       id: 2,
-      message: "🏥 Searching for doctors and clinics in your area...",
+      message: (
+        <span className="flex items-center gap-2">
+          <Hospital className="inline w-5 h-5 text-blue-500" />
+          Searching for doctors and clinics in your area...
+        </span>
+      ),
       status: "processing",
       timestamp: new Date(Date.now() + 1000),
     },
     {
       id: 3,
-      message: "✅ Found 8 available healthcare providers nearby",
+      message: (
+        <span className="flex items-center gap-2">
+          <Users className="inline w-5 h-5 text-emerald-500" />
+          Found 8 available healthcare providers nearby
+        </span>
+      ),
       status: "success",
       timestamp: new Date(Date.now() + 2000),
     },
     {
       id: 4,
-      message: "📅 Checking appointment availability...",
+      message: (
+        <span className="flex items-center gap-2">
+          <Calendar className="inline w-5 h-5 text-blue-500" />
+          Checking appointment availability...
+        </span>
+      ),
       status: "processing",
       timestamp: new Date(Date.now() + 3000),
     },
     {
       id: 5,
-      message: "📞 Contacting Dr. Sarah Johnson's clinic...",
+      message: (
+        <span className="flex items-center gap-2">
+          <Phone className="inline w-5 h-5 text-blue-500" />
+          Contacting Dr. Sarah Johnson's clinic...
+        </span>
+      ),
       status: "processing",
       timestamp: new Date(Date.now() + 4000),
     },
     {
       id: 6,
-      message: "🎉 Appointment confirmed for tomorrow at 2:00 PM",
+      message: (
+        <span className="flex items-center gap-2">
+          <CheckCircle className="inline w-5 h-5 text-emerald-500" />
+          Appointment confirmed for tomorrow at 2:00 PM
+        </span>
+      ),
       status: "success",
       timestamp: new Date(Date.now() + 5000),
     },
     {
       id: 7,
-      message: "📱 Appointment added to your calendar",
+      message: (
+        <span className="flex items-center gap-2">
+          <CalendarCheck className="inline w-5 h-5 text-blue-500" />
+          Appointment added to your calendar
+        </span>
+      ),
       status: "success",
       timestamp: new Date(Date.now() + 6000),
     },
     {
       id: 8,
-      message: "📧 Confirmation email sent to your address",
+      message: (
+        <span className="flex items-center gap-2">
+          <Mail className="inline w-5 h-5 text-blue-500" />
+          Confirmation email sent to your address
+        </span>
+      ),
       status: "success",
       timestamp: new Date(Date.now() + 7000),
     },
