@@ -1,11 +1,10 @@
-"use client"
-
 import { Link, useNavigate } from "react-router-dom"
-import { Stethoscope, Heart, Calendar, Shield, Users, Award, ArrowRight } from "lucide-react"
+import { Stethoscope, Heart, Calendar, Shield, Users, Award, ArrowRight, Pill } from "lucide-react"
 // import { useAuth } from "../context/AuthContext"
 import axios from "axios"
 import { useContext } from "react"
 import { UserDataContext } from "../context/UserContext"
+import logo from "../assets/logo.png"
 
 const HomePage = () => {
   const { user, setUser } = useContext(UserDataContext); // ✅ use UserContext for display
@@ -33,7 +32,7 @@ const HomePage = () => {
       {/* Background Icons */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-50 left-10">
-          <Stethoscope className="w-32 h-32 text-blue-600" />
+          <Pill className="w-32 h-32 text-blue-600" />
         </div>
         <div className="absolute top-32 right-20">
           <Heart className="w-24 h-24 text-red-400" />
@@ -105,7 +104,7 @@ const HomePage = () => {
             </p>
             <button
               onClick={() => navigate("/medical-service")}
-              className="inline-flex items-center px-12 py-4 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="inline-flex items-center px-12 py-4 bg-gradient-to-r from-[#162942] to-[#428ce2] text-white rounded-2xl font-bold text-lg hover:from-[#428ce2] hover:to-[#162942] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Get Started
               <ArrowRight className="w-6 h-6 ml-2" />
@@ -134,7 +133,7 @@ const HomePage = () => {
               text: "Your health information is protected with enterprise-grade security and HIPAA-compliant data handling."
             }].map((item, idx) => (
               <div key={idx} className="bg-white rounded-3xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
@@ -149,7 +148,7 @@ const HomePage = () => {
           <div className="bg-white rounded-3xl p-12 shadow-2xl border border-blue-100">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-800 mb-6">
-                About MedicalAI
+                About Botoupsy
               </h2>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto">
                 We're revolutionizing healthcare accessibility by combining
@@ -188,9 +187,9 @@ const HomePage = () => {
 
         {/* Footer */}
         <footer className="text-center py-12">
-          <p className="text-gray-500 text-sm flex items-center justify-center">
+          {/* <p className="text-gray-500 text-sm flex items-center justify-center">
             Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025
-          </p>
+          </p> */}
         </footer>
       </div>
     </div>
