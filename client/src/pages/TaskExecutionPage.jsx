@@ -1,6 +1,19 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { CheckCircle, Clock, AlertCircle, ArrowLeft, Stethoscope, Heart, Calendar } from "lucide-react"
+import {
+  CheckCircle,
+  Clock,
+  AlertCircle,
+  ArrowLeft,
+  Stethoscope,
+  Heart,
+  Calendar,
+  MapPin,
+  PhoneCall,
+  PartyPopper,
+  Smartphone,
+  Mail
+} from "lucide-react"
 
 const TaskExecutionPage = () => {
   const navigate = useNavigate()
@@ -8,49 +21,14 @@ const TaskExecutionPage = () => {
   const [statusUpdates, setStatusUpdates] = useState([])
 
   const mockStatusUpdates = [
-    { id: 1, message: "🔍 Analyzing your medical request...", status: "processing", timestamp: new Date() },
-    {
-      id: 2,
-      message: "🏥 Searching for doctors and clinics in your area...",
-      status: "processing",
-      timestamp: new Date(Date.now() + 1000),
-    },
-    {
-      id: 3,
-      message: "✅ Found 8 available healthcare providers nearby",
-      status: "success",
-      timestamp: new Date(Date.now() + 2000),
-    },
-    {
-      id: 4,
-      message: "📅 Checking appointment availability...",
-      status: "processing",
-      timestamp: new Date(Date.now() + 3000),
-    },
-    {
-      id: 5,
-      message: "📞 Contacting Dr. Sarah Johnson's clinic...",
-      status: "processing",
-      timestamp: new Date(Date.now() + 4000),
-    },
-    {
-      id: 6,
-      message: "🎉 Appointment confirmed for tomorrow at 2:00 PM",
-      status: "success",
-      timestamp: new Date(Date.now() + 5000),
-    },
-    {
-      id: 7,
-      message: "📱 Appointment added to your calendar",
-      status: "success",
-      timestamp: new Date(Date.now() + 6000),
-    },
-    {
-      id: 8,
-      message: "📧 Confirmation email sent to your address",
-      status: "success",
-      timestamp: new Date(Date.now() + 7000),
-    },
+    { id: 1, message: "Analyzing your medical request...", status: "processing", icon: <Clock /> },
+    { id: 2, message: "Searching for doctors and clinics in your area...", status: "processing", icon: <MapPin /> },
+    { id: 3, message: "Found 8 available healthcare providers nearby", status: "success", icon: <CheckCircle /> },
+    { id: 4, message: "Checking appointment availability...", status: "processing", icon: <Calendar /> },
+    { id: 5, message: "Contacting Dr. Sarah Johnson's clinic...", status: "processing", icon: <PhoneCall /> },
+    { id: 6, message: "Appointment confirmed for tomorrow at 2:00 PM", status: "success", icon: <PartyPopper /> },
+    { id: 7, message: "Appointment added to your calendar", status: "success", icon: <Smartphone /> },
+    { id: 8, message: "Confirmation email sent to your address", status: "success", icon: <Mail /> }
   ]
 
   useEffect(() => {
