@@ -1,29 +1,32 @@
+"use client"
+
 import { Link, useNavigate } from "react-router-dom"
 import { Stethoscope, Heart, Calendar, Shield, Users, Award, ArrowRight } from "lucide-react"
 // import { useAuth } from "../context/AuthContext"
 import axios from "axios"
 import { useContext } from "react"
 import { UserDataContext } from "../context/UserContext"
-import logo from "../assets/logo.png"
 
 const HomePage = () => {
-  const navigate = useNavigate()
-  const { user } = useContext(UserDataContext) // ✅ use UserContext for display
-  const handleLogout = async () => {
-  try {
-    await axios.get(`${import.meta.env.VITE_BASE_URL}/users/logout`, {
-      withCredentials: true, // this is CRUCIAL to send cookies
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    });
+  const { user, setUser } = useContext(UserDataContext); // ✅ use UserContext for display
+  const navigate = useNavigate();
 
-    localStorage.removeItem("token"); // cleanup
-    navigate("/login"); // redirect
-  } catch (error) {
-    console.error("Logout failed:", error);
-  }
-};
+  const handleLogout = async () => {
+    try {
+      await axios.get(`${import.meta.env.VITE_BASE_URL}/users/logout`, {
+        withCredentials: true, // this is CRUCIAL to send cookies
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setUser(null); // Clear user state
+      localStorage.removeItem("token"); // cleanup
+      localStorage.removeItem("user");
+      navigate("/"); // redirect to homepage
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 relative overflow-hidden">
@@ -58,7 +61,9 @@ const HomePage = () => {
           <div className="space-x-4">
             {user ? (
               <div className="flex items-center space-x-4">
-                <span className="text-gray-700">Welcome, {user.name || user.fullName}!</span>
+                <span className="text-gray-700">
+                  Welcome, {user.name || user.fullName}!
+                </span>
                 <button
                   onClick={handleLogout}
                   className="px-6 py-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
@@ -94,16 +99,22 @@ const HomePage = () => {
               Healthcare Assistant
             </h1>
             <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-              Experience the future of healthcare booking. Simply describe what you need, and our AI will find the right
-              doctor, book your appointment, and add it to your calendar - all in minutes.
+              Experience the future of healthcare booking. Simply describe what
+              you need, and our AI will find the right doctor, book your
+              appointment, and add it to your calendar - all in minutes.
             </p>
             <button
               onClick={() => navigate("/medical-service")}
-              className="inline-flex items-center px-12 py-4 bg-gradient-to-r from-[#162942] to-[#428ce2] text-white rounded-2xl font-bold text-lg hover:from-[#428ce2] hover:to-[#162942] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="inline-flex items-center px-12 py-4 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Get Started
               <ArrowRight className="w-6 h-6 ml-2" />
             </button>
+            {!user && (
+              <p className="text-sm text-gray-500 mt-2">
+                Please login to enable this feature.
+              </p>
+            )}
           </div>
 
           {/* Features Grid */}
@@ -123,10 +134,12 @@ const HomePage = () => {
               text: "Your health information is protected with enterprise-grade security and HIPAA-compliant data handling."
             }].map((item, idx) => (
               <div key={idx} className="bg-white rounded-3xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  {item.title}
+                </h3>
                 <p className="text-gray-600">{item.text}</p>
               </div>
             ))}
@@ -135,10 +148,13 @@ const HomePage = () => {
           {/* About Section */}
           <div className="bg-white rounded-3xl p-12 shadow-2xl border border-blue-100">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-800 mb-6">About MedicalAI</h2>
+              <h2 className="text-4xl font-bold text-gray-800 mb-6">
+                About MedicalAI
+              </h2>
               <p className="text-lg text-gray-600 max-w-4xl mx-auto">
-                We're revolutionizing healthcare accessibility by combining artificial intelligence with human-centered
-                design. Our mission is to make quality healthcare just a conversation away.
+                We're revolutionizing healthcare accessibility by combining
+                artificial intelligence with human-centered design. Our mission
+                is to make quality healthcare just a conversation away.
               </p>
             </div>
 
@@ -173,12 +189,12 @@ const HomePage = () => {
         {/* Footer */}
         <footer className="text-center py-12">
           <p className="text-gray-500 text-sm flex items-center justify-center">
-            {/* Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025 */}
+            Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025
           </p>
         </footer>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

@@ -17,16 +17,25 @@ function App() {
         <Router>
           <div className="min-h-screen">
             <Routes>
-              <Route path="/" element={
-                <UserProtectedWrapper>
-                <HomePage />
-                </UserProtectedWrapper>
+              <Route path="/" element={<HomePage />
                 } />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
-              <Route path="/medical-service" element={<MedicalServicePage />} />
-              <Route path="/address-details" element={<AddressDetailPage />} />
-              <Route path="/task-execution" element={<TaskExecutionPage />} />
+              <Route path="/medical-service" element={
+                <UserProtectedWrapper>
+                  <MedicalServicePage />
+                </UserProtectedWrapper>
+              } />
+              <Route path="/address-details" element={
+                <UserProtectedWrapper>
+                  <AddressDetailPage />
+                </UserProtectedWrapper>
+              } />
+              <Route path="/task-execution" element={
+                <UserProtectedWrapper>
+                  <TaskExecutionPage />
+                </UserProtectedWrapper>
+              } />
             </Routes>
           </div>
         </Router>
