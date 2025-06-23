@@ -1,11 +1,10 @@
-"use client"
-
 import { Link, useNavigate } from "react-router-dom"
 import { Stethoscope, Heart, Calendar, Shield, Users, Award, ArrowRight } from "lucide-react"
 // import { useAuth } from "../context/AuthContext"
 import axios from "axios"
 import { useContext } from "react"
 import { UserDataContext } from "../context/UserContext"
+import logo from "../assets/logo.png"
 
 const HomePage = () => {
   const navigate = useNavigate()
@@ -30,7 +29,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 relative overflow-hidden">
       {/* Background Icons */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10">
+        <div className="absolute top-50 left-10">
           <Stethoscope className="w-32 h-32 text-blue-600" />
         </div>
         <div className="absolute top-32 right-20">
@@ -48,11 +47,11 @@ const HomePage = () => {
         {/* Header */}
         <header className="flex justify-between items-center p-6">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-xl flex items-center justify-center">
-              <Stethoscope className="w-6 h-6 text-white" />
+            <div className="w-35 h-35 bg-gradient-to-r rounded-xl flex items-center justify-center absolute top-1 left-1">
+              <img src={logo} alt="" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
-              MedicalAI
+            <span className="text-xl font-bold bg-gradient-to-r from-[#162942] to-[#428ce2] bg-clip-text text-transparent">
+              {/* Botoupsy */}
             </span>
           </div>
 
@@ -77,7 +76,7 @@ const HomePage = () => {
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-xl hover:from-blue-700 hover:to-emerald-700 transition-all font-semibold"
+                  className="px-6 py-2 bg-gradient-to-r from-[#162942] to-[#428ce2] text-white rounded-xl hover:from-[#428ce2] hover:to-[#162942] transition-all font-semibold"
                 >
                   Sign Up
                 </Link>
@@ -89,7 +88,7 @@ const HomePage = () => {
         {/* Hero */}
         <div className="max-w-6xl mx-auto px-6 py-20">
           <div className="text-center mb-16">
-            <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent mb-6">
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-[#162942] to-[#428ce2] bg-clip-text text-transparent mb-6">
               Your AI-Powered
               <br />
               Healthcare Assistant
@@ -100,7 +99,7 @@ const HomePage = () => {
             </p>
             <button
               onClick={() => navigate("/medical-service")}
-              className="inline-flex items-center px-12 py-4 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="inline-flex items-center px-12 py-4 bg-gradient-to-r from-[#162942] to-[#428ce2] text-white rounded-2xl font-bold text-lg hover:from-[#428ce2] hover:to-[#162942] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Get Started
               <ArrowRight className="w-6 h-6 ml-2" />
@@ -124,7 +123,7 @@ const HomePage = () => {
               text: "Your health information is protected with enterprise-grade security and HIPAA-compliant data handling."
             }].map((item, idx) => (
               <div key={idx} className="bg-white rounded-3xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
@@ -174,7 +173,7 @@ const HomePage = () => {
         {/* Footer */}
         <footer className="text-center py-12">
           <p className="text-gray-500 text-sm flex items-center justify-center">
-            Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025
+            {/* Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025 */}
           </p>
         </footer>
       </div>

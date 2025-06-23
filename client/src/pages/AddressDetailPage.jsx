@@ -108,7 +108,7 @@ const AddressDetailPage = () => {
           {/* Main Card */}
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-blue-100">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl mb-4">
                 <MapPin className="w-8 h-8 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-gray-800 mb-2">Contact & Location Details</h2>
@@ -198,7 +198,7 @@ const AddressDetailPage = () => {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-4 px-8 rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="w-full bg-gradient-to-r from-[#162942] to-[#428ce2] text-white py-4 px-8 rounded-2xl font-bold text-lg hover:from-[#428ce2] hover:to-[#162942] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Book My Appointment →
               </button>
@@ -208,7 +208,7 @@ const AddressDetailPage = () => {
           {/* Footer */}
           <footer className="text-center mt-12">
             <p className="text-gray-500 text-sm flex items-center justify-center">
-              Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025
+              {/* Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025 */}
             </p>
           </footer>
         </div>

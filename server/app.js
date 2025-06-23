@@ -11,8 +11,8 @@ const app = express();
 connectToDB();
 
 app.use(cors({
-    origin: 'http://localhost:5173', // frontend domain
-    credentials: true
+    origin: (origin, callback) => callback(null, origin),
+    credentials:true
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))

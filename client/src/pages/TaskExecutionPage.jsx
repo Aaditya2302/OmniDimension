@@ -153,7 +153,7 @@ const TaskExecutionPage = () => {
           {/* Main Card */}
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-blue-100">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl mb-4">
                 {isExecuting ? (
                   <Clock className="w-8 h-8 text-white animate-spin" />
                 ) : (
@@ -196,7 +196,7 @@ const TaskExecutionPage = () => {
                 </div>
                 <button
                   onClick={goHome}
-                  className="w-full mt-6 bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-4 px-8 rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="w-full mt-6 bg-gradient-to-r from-[#162942] to-[#428ce2] text-white py-4 px-8 rounded-2xl font-bold text-lg hover:from-[#428ce2] hover:to-[#162942] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   Book Another Appointment
                 </button>
@@ -214,7 +214,7 @@ const TaskExecutionPage = () => {
           {/* Footer */}
           <footer className="text-center mt-12">
             <p className="text-gray-500 text-sm flex items-center justify-center">
-              Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025
+              {/* Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025 */}
             </p>
           </footer>
         </div>

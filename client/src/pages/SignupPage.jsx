@@ -125,10 +125,10 @@ const SignupPage = () => {
           {/* Main Card */}
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-blue-100">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-2xl mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl mb-4">
                 <Stethoscope className="w-8 h-8 text-white" />
               </div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-[#162942] to-[#428ce2] bg-clip-text text-transparent mb-2">
                 Join MedicalAI
               </h1>
               <p className="text-gray-600">
@@ -262,7 +262,7 @@ const SignupPage = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-4 px-8 rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center"
+                className="w-full bg-gradient-to-r from-[#162942] to-[#428ce2] text-white py-4 px-8 rounded-2xl font-bold text-lg hover:from-[#428ce2] hover:to-[#162942] disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center"
               >
                 {isLoading ? (
                   <>
@@ -292,13 +292,13 @@ const SignupPage = () => {
                 <div className="w-full border-t border-gray-200"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-gray-500">
+                {/* <span className="px-4 bg-white text-gray-500">
                   Or continue with
-                </span>
+                </span> */}
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-4">
+            {/* <div className="mt-6 grid grid-cols-2 gap-4">
               <button className="flex items-center justify-center px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
                 <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                   <path
@@ -330,14 +330,14 @@ const SignupPage = () => {
                 </svg>
                 Facebook
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* Footer */}
           <footer className="text-center mt-12">
             <p className="text-gray-500 text-sm flex items-center justify-center">
-              Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at
-              Hackathon 2025
+              {/* Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at
+              Hackathon 2025 */}
             </p>
           </footer>
         </div>
