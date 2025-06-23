@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTask } from "../context/TaskContext"
-import { HelpCircle, MapPin, User, Phone, Mail, ArrowLeft, Stethoscope, Heart, Calendar } from "lucide-react"
+import { HelpCircle, MapPin, User, Phone, Mail, ArrowLeft, Stethoscope, Heart, Calendar, Pill } from "lucide-react"
 
 const AddressDetailPage = () => {
   const navigate = useNavigate()
@@ -78,8 +78,8 @@ const AddressDetailPage = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
               <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
                 <h3 className="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                  <Stethoscope className="w-6 h-6 mr-2 text-blue-600" />
-                  How to use Medical AI Assistant
+                  <Pill className="w-6 h-6 mr-2 text-blue-600" />
+                  How to use Botsy AI
                 </h3>
                 <div className="space-y-4 text-sm text-gray-600">
                   <p>
@@ -97,7 +97,7 @@ const AddressDetailPage = () => {
                 </div>
                 <button
                   onClick={() => setShowHelp(false)}
-                  className="mt-6 w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-3 rounded-xl hover:from-blue-700 hover:to-emerald-700 transition-all font-semibold"
+                  className="mt-6 w-full bg-gradient-to-r from-[#162942] to-[#428ce2] text-white py-3 rounded-xl hover:from-[#428ce2] hover:to-[#162942] transition-all font-semibold"
                 >
                   Got it!
                 </button>

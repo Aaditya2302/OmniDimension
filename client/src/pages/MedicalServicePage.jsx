@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTask } from "../context/TaskContext"
-import { HelpCircle, Stethoscope, Heart, Calendar, ArrowLeft } from "lucide-react"
+import { HelpCircle, Stethoscope, Heart, Calendar, ArrowLeft, Pill } from "lucide-react"
 
 const MedicalServicePage = () => {
   const navigate = useNavigate()
@@ -78,8 +78,8 @@ const MedicalServicePage = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
               <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
                 <h3 className="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                  <Stethoscope className="w-6 h-6 mr-2 text-blue-600" />
-                  How to use Medical AI Assistant
+                  <Pill className="w-6 h-6 mr-2 text-blue-600" />
+                  How to use Botsy AI
                 </h3>
                 <div className="space-y-4 text-sm text-gray-600">
                   <p>
@@ -97,7 +97,7 @@ const MedicalServicePage = () => {
                 </div>
                 <button
                   onClick={() => setShowHelp(false)}
-                  className="mt-6 w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-3 rounded-xl hover:from-blue-700 hover:to-emerald-700 transition-all font-semibold"
+                  className="mt-6 w-full bg-gradient-to-r from-[#162942] to-[#428ce2] text-white py-3 rounded-xl hover:from-[#428ce2] hover:to-[#162942] transition-all font-semibold"
                 >
                   Got it!
                 </button>
@@ -112,7 +112,7 @@ const MedicalServicePage = () => {
                 <Stethoscope className="w-8 h-8 text-white" />
               </div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-[#162942] to-[#428ce2] bg-clip-text text-transparent mb-2">
-                Medical AI Assistant
+                Botsy AI 
               </h1>
               <p className="text-gray-600">Describe your healthcare needs and we'll handle the rest</p>
             </div>

@@ -1,6 +1,19 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { CheckCircle, Clock, AlertCircle, ArrowLeft, Stethoscope, Heart, Calendar } from "lucide-react"
+import {
+  CheckCircle,
+  Clock,
+  AlertCircle,
+  ArrowLeft,
+  Stethoscope,
+  Heart,
+  Calendar,
+  MapPin,
+  PhoneCall,
+  PartyPopper,
+  Smartphone,
+  Mail
+} from "lucide-react"
 
 const TaskExecutionPage = () => {
   const navigate = useNavigate()
@@ -8,64 +21,25 @@ const TaskExecutionPage = () => {
   const [statusUpdates, setStatusUpdates] = useState([])
 
   const mockStatusUpdates = [
-    { id: 1, message: "🔍 Analyzing your medical request...", status: "processing", timestamp: new Date() },
-    {
-      id: 2,
-      message: "🏥 Searching for doctors and clinics in your area...",
-      status: "processing",
-      timestamp: new Date(Date.now() + 1000),
-    },
-    {
-      id: 3,
-      message: "✅ Found 8 available healthcare providers nearby",
-      status: "success",
-      timestamp: new Date(Date.now() + 2000),
-    },
-    {
-      id: 4,
-      message: "📅 Checking appointment availability...",
-      status: "processing",
-      timestamp: new Date(Date.now() + 3000),
-    },
-    {
-      id: 5,
-      message: "📞 Contacting Dr. Sarah Johnson's clinic...",
-      status: "processing",
-      timestamp: new Date(Date.now() + 4000),
-    },
-    {
-      id: 6,
-      message: "🎉 Appointment confirmed for tomorrow at 2:00 PM",
-      status: "success",
-      timestamp: new Date(Date.now() + 5000),
-    },
-    {
-      id: 7,
-      message: "📱 Appointment added to your calendar",
-      status: "success",
-      timestamp: new Date(Date.now() + 6000),
-    },
-    {
-      id: 8,
-      message: "📧 Confirmation email sent to your address",
-      status: "success",
-      timestamp: new Date(Date.now() + 7000),
-    },
+    { id: 1, message: "Analyzing your medical request...", status: "processing", icon: <Clock /> },
+    { id: 2, message: "Searching for doctors and clinics in your area...", status: "processing", icon: <MapPin /> },
+    { id: 3, message: "Found 8 available healthcare providers nearby", status: "success", icon: <CheckCircle /> },
+    { id: 4, message: "Checking appointment availability...", status: "processing", icon: <Calendar /> },
+    { id: 5, message: "Contacting Dr. Sarah Johnson's clinic...", status: "processing", icon: <PhoneCall /> },
+    { id: 6, message: "Appointment confirmed for tomorrow at 2:00 PM", status: "success", icon: <PartyPopper /> },
+    { id: 7, message: "Appointment added to your calendar", status: "success", icon: <Smartphone /> },
+    { id: 8, message: "Confirmation email sent to your address", status: "success", icon: <Mail /> }
   ]
 
   useEffect(() => {
     const executeTask = async () => {
       setStatusUpdates([])
-
-      // Simulate real-time status updates
       for (let i = 0; i < mockStatusUpdates.length; i++) {
         await new Promise((resolve) => setTimeout(resolve, 1000))
         setStatusUpdates((prev) => [...prev, mockStatusUpdates[i]])
       }
-
       setIsExecuting(false)
     }
-
     executeTask()
   }, [])
 
@@ -90,17 +64,12 @@ const TaskExecutionPage = () => {
     })
   }
 
-  const goBack = () => {
-    navigate("/address-details")
-  }
-
-  const goHome = () => {
-    navigate("/")
-  }
+  const goBack = () => navigate("/address-details")
+  const goHome = () => navigate("/")
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 relative overflow-hidden">
-      {/* Medical Background Pattern */}
+      {/* Background Icons */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10">
           <Stethoscope className="w-32 h-32 text-blue-600" />
@@ -120,37 +89,31 @@ const TaskExecutionPage = () => {
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
-            <div className="flex items-center">
-              {isExecuting && (
-                <button
-                  onClick={goBack}
-                  className="mr-4 p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-full transition-colors"
-                >
-                  <ArrowLeft className="w-6 h-6" />
-                </button>
-              )}
-            </div>
-            <div></div>
+            {isExecuting && (
+              <button
+                onClick={goBack}
+                className="mr-4 p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-full transition-colors"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </button>
+            )}
           </div>
 
-          {/* Progress Indicator */}
+          {/* Progress Steps */}
           <div className="flex items-center justify-center mb-8">
             <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-blue-600 text-white">
-                1
-              </div>
-              <div className="w-16 h-1 bg-blue-600"></div>
-              <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-blue-600 text-white">
-                2
-              </div>
-              <div className="w-16 h-1 bg-blue-600"></div>
-              <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-blue-600 text-white">
-                3
-              </div>
+              {[1, 2, 3].map((step) => (
+                <>
+                  <div key={step} className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-blue-600 text-white">
+                    {step}
+                  </div>
+                  {step < 3 && <div className="w-16 h-1 bg-blue-600"></div>}
+                </>
+              ))}
             </div>
           </div>
 
-          {/* Main Card */}
+          {/* Card */}
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-blue-100">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl mb-4">
@@ -176,10 +139,12 @@ const TaskExecutionPage = () => {
                     update.status === "success" ? "bg-emerald-50 border-emerald-500" : "bg-blue-50 border-blue-500"
                   } transform ${index === statusUpdates.length - 1 ? "scale-105" : ""}`}
                 >
-                  <div className="flex-shrink-0 mt-1">{getStatusIcon(update.status)}</div>
+                  <div className="flex-shrink-0 mt-1 text-blue-600">
+                    {update.icon}
+                  </div>
                   <div className="flex-1">
                     <p className="text-gray-800 font-medium">{update.message}</p>
-                    <p className="text-sm text-gray-500 mt-1">{formatTime(update.timestamp)}</p>
+                    <p className="text-sm text-gray-500 mt-1">{formatTime(new Date())}</p>
                   </div>
                 </div>
               ))}
@@ -210,13 +175,6 @@ const TaskExecutionPage = () => {
               </div>
             )}
           </div>
-
-          {/* Footer */}
-          <footer className="text-center mt-12">
-            <p className="text-gray-500 text-sm flex items-center justify-center">
-              {/* Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025 */}
-            </p>
-          </footer>
         </div>
       </div>
     </div>

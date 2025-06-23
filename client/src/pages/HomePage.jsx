@@ -4,6 +4,7 @@ import { Stethoscope, Heart, Calendar, Shield, Users, Award, ArrowRight, Pill } 
 import axios from "axios"
 import { useContext } from "react"
 import { UserDataContext } from "../context/UserContext"
+import logo from "../assets/logo.png"
 
 const HomePage = () => {
   const { user, setUser } = useContext(UserDataContext); // ✅ use UserContext for display
