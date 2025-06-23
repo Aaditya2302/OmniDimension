@@ -12,6 +12,7 @@ import {
   Calendar,
   ArrowLeft,
   Loader2,
+  Pill,
 } from "lucide-react";
 
 const LoginPage = () => {
@@ -87,12 +88,12 @@ const LoginPage = () => {
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-blue-100">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#162942] to-[#428ce2] rounded-2xl mb-4">
-                <Stethoscope className="w-8 h-8 text-white" />
+                <Pill className="w-8 h-8 text-white" />
               </div>
               <h1 className="text-3xl font-bold bg-gradient-to-r from-[#162942] to-[#428ce2] bg-clip-text text-transparent mb-2">
                 Welcome Back
               </h1>
-              <p className="text-gray-600">Sign in to your MedicalAI account</p>
+              <p className="text-gray-600">Sign in to your Botoupsy account</p>
             </div>
 
             {error && (
