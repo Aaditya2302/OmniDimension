@@ -11,7 +11,7 @@ const app = express();
 connectToDB();
 
 app.use(cors({
-    origin: 'https://omni-dimension-zeta.vercel.app/', 
+    origin: 'https://omni-dimension-zeta.vercel.app', 
     credentials: true
 }));
 app.use(express.json());
