@@ -83,7 +83,9 @@ const SignupPage = () => {
       setFullName("");
       setPassword("");
     } catch (err) {
-      setError(err.message || "Signup failed. Please try again.");
+      setError(err.response.data.message || "Signup failed. Please try again.");
+      console.log(err);
+      
     } finally {
       setIsLoading(false);
     }

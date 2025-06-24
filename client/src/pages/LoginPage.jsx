@@ -44,7 +44,7 @@ const LoginPage = () => {
           navigate('/');
     }
     } catch (err) {
-      setError(err.message || "Login failed. Please try again.");
+      setError(err.response.data.message || "Login failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
