@@ -1,27 +1,27 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Stethoscope, Heart, Calendar, Shield, Users, Award, ArrowRight, Pill } from "lucide-react"
-// import { useAuth } from "../context/AuthContext"
+
 import axios from "axios"
 import { useContext } from "react"
 import { UserDataContext } from "../context/UserContext"
 import logo from "../assets/logo.png"
 
 const HomePage = () => {
-  const { user, setUser } = useContext(UserDataContext); // ✅ use UserContext for display
+  const { user, setUser } = useContext(UserDataContext); 
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await axios.get(`${import.meta.env.VITE_BASE_URL}/users/logout`, {
-        withCredentials: true, // this is CRUCIAL to send cookies
+        withCredentials: true,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      setUser(null); // Clear user state
-      localStorage.removeItem("token"); // cleanup
+      setUser(null);
+      localStorage.removeItem("token");
       localStorage.removeItem("user");
-      navigate("/"); // redirect to homepage
+      navigate("/"); 
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -187,9 +187,7 @@ const HomePage = () => {
 
         {/* Footer */}
         <footer className="text-center py-12">
-          {/* <p className="text-gray-500 text-sm flex items-center justify-center">
-            Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025
-          </p> */}
+      
         </footer>
       </div>
     </div>

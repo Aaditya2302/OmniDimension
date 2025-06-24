@@ -5,12 +5,12 @@ export const UserDataContext = createContext()
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState(() => {
-    // Try to load user from localStorage on first render
+  
     const saved = localStorage.getItem("user");
     return saved ? JSON.parse(saved) : null;
   });
 
-  // Keep localStorage in sync when user changes
+ 
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));

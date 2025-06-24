@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react"
-import { UserDataContext } from "./UserContext" // 💡 import user context
-
+import { UserDataContext } from "./UserContext"
 const AuthContext = createContext()
 
 export const useAuth = () => {
@@ -15,14 +14,14 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  const { setUser: setUserData } = useContext(UserDataContext) // 💡 grab userContext updater
+  const { setUser: setUserData } = useContext(UserDataContext) 
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user")
     if (savedUser) {
       const parsed = JSON.parse(savedUser)
       setUser(parsed)
-      setUserData(parsed) // 💡 update userContext as well
+      setUserData(parsed) 
     }
     setIsLoading(false)
   }, [])
@@ -38,7 +37,7 @@ export const AuthProvider = ({ children }) => {
             createdAt: new Date().toISOString(),
           }
           setUser(userData)
-          setUserData(userData) // 💡 update userContext
+          setUserData(userData) 
           localStorage.setItem("user", JSON.stringify(userData))
           resolve(userData)
         } else {
@@ -59,7 +58,7 @@ export const AuthProvider = ({ children }) => {
             createdAt: new Date().toISOString(),
           }
           setUser(userData)
-          setUserData(userData) // 💡 update userContext
+          setUserData(userData) 
           localStorage.setItem("user", JSON.stringify(userData))
           resolve(userData)
         } else {
@@ -71,7 +70,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null)
-    setUserData(null) // 💡 clear userContext
+    setUserData(null) 
     localStorage.removeItem("user")
   }
 

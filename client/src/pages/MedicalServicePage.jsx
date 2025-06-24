@@ -141,7 +141,7 @@ const MedicalServicePage = () => {
           {/* Footer */}
           <footer className="text-center mt-12">
             <p className="text-gray-500 text-sm flex items-center justify-center">
-              {/* Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025 */}
+              
             </p>
           </footer>
         </div>

@@ -19,7 +19,7 @@ const AddressDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 relative overflow-hidden">
-      {/* Medical Background Pattern */}
+     
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10">
           <Stethoscope className="w-32 h-32 text-blue-600" />
@@ -208,7 +208,7 @@ const AddressDetailPage = () => {
           {/* Footer */}
           <footer className="text-center mt-12">
             <p className="text-gray-500 text-sm flex items-center justify-center">
-              {/* Built with <Heart className="w-4 h-4 mx-1 text-red-500" /> at Hackathon 2025 */}
+             
             </p>
           </footer>
         </div>

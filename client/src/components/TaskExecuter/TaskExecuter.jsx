@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import {
   HelpCircle,
@@ -17,7 +15,7 @@ import {
 } from "lucide-react"
 
 const TaskExecutor = () => {
-  const [currentStep, setCurrentStep] = useState(1) // 1: Task Input, 2: Address Details, 3: Status Updates
+  const [currentStep, setCurrentStep] = useState(1) 
   const [task, setTask] = useState("")
   const [addressDetails, setAddressDetails] = useState({
     fullName: "",
